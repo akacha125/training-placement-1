@@ -1,29 +1,22 @@
 import java.util.Scanner;
 
-public class MaxMinInArray {
+public class PowerUsingRecursion {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter the size of the array: ");
-        int size = scanner.nextInt();
+        System.out.print("Enter the base: ");
+        int base = scanner.nextInt();
+        System.out.print("Enter the exponent: ");
+        int exponent = scanner.nextInt();
 
-        int[] arr = new int[size];
-        System.out.println("Enter the elements of the array:");
-        for (int i = 0; i < size; i++) {
-            arr[i] = scanner.nextInt();
+        long result = power(base, exponent);
+        System.out.println(base + " raised to the power " + exponent + " is: " + result);
+    }
+
+    public static long power(int base, int exponent) {
+        if (exponent == 0) {
+            return 1;
+        } else {
+            return base * power(base, exponent - 1);
         }
-
-        int max = arr[0], min = arr[0];
-
-        for (int i = 1; i < size; i++) {
-            if (arr[i] > max) {
-                max = arr[i];
-            }
-            if (arr[i] < min) {
-                min = arr[i];
-            }
-        }
-
-        System.out.println("Maximum value: " + max);
-        System.out.println("Minimum value: " + min);
     }
 }
